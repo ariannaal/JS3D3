@@ -1,5 +1,10 @@
 // https://striveschool-api.herokuapp.com/books
 
+window.addEventListener("DOMContentLoaded", () => {
+// avvio della fetch al caricamento della pagina
+    fetchBooks()
+})
+
 const fetchBooks = () => {
     // chiamare fetch farà inviare una richiesta HTTP di tipo GET (default) all'indirizzo specificato
     // essendo che fetch contiene una Promise, dobbiamo aspettare che si risolva, positivamente o negativamente
@@ -53,18 +58,25 @@ const fetchBooks = () => {
         price.classList.add("card-price");
         price.textContent = book.price + "$";
             
+        const buttonScarta = document.createElement("button");
+        buttonScarta.classList.add("btn", "btn-danger", "m-2");
+        buttonScarta.textContent = "Scarta";
+        buttonScarta.addEventListener('click', () => {
+                    card.remove();
+                });
+            
         col.appendChild(card);
         row.appendChild(col);
         card.appendChild(img);
         card.appendChild(cardBody);
         cardBody.appendChild(title);
         cardBody.appendChild(price);
+        cardBody.appendChild(buttonScarta);
           
 
     })
 
-      
-        
+     
 })
 };
 
@@ -73,9 +85,4 @@ const fetchBooks = () => {
 
 
 
-
-        window.addEventListener("DOMContentLoaded", () => {
-            // avvio della fetch al caricamento della pagina
-            fetchBooks()
-        })
 
